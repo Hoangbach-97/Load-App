@@ -17,4 +17,6 @@
     <string name="btn2">
             https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter</string>
     <string name="btn3">https://github.com/square/retrofit</string>
+
+    <string name="undecided">Please select one repo to download!</string>
 </resources>
