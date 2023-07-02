@@ -22,11 +22,33 @@
         android:id="@+id/radio_main"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@id/custom_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/img_main">
 
+        <RadioButton
+            android:id="@+id/radioButton_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/btn1" />
+
+        <RadioButton
+            android:id="@+id/radioButton_btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/btn2" />
+
+        <RadioButton
+            android:id="@+id/radioButton_btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/btn3" />
     </RadioGroup>
 
     <com.udacity.LoadingButton
@@ -37,6 +59,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_main" />
+        app:layout_constraintTop_toBottomOf="@+id/radio_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
