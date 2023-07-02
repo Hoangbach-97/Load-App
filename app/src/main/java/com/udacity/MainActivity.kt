@@ -9,7 +9,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -35,9 +34,8 @@ class MainActivity : AppCompatActivity() {
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
-        // TODO: Implement code below
         contentView = binding.main
-        contentView.test.setOnClickListener {
+        contentView.customButton.setOnClickListener {
             download()
         }
 
@@ -52,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun download() {
+        contentView.customButton.setStateBtnDownload(ButtonState.Clicked)
         var urlSelected = EMPTY
         when (contentView.radioMain.checkedRadioButtonId) {
             contentView.radioButtonBtn1.id -> urlSelected = URL1
@@ -59,6 +58,8 @@ class MainActivity : AppCompatActivity() {
             contentView.radioButtonBtn3.id -> urlSelected = URL3
         }
         if (urlSelected.isNotEmpty()) {
+            contentView.customButton.setStateBtnDownload(ButtonState.Loading)
+
             val request =
                 DownloadManager.Request(Uri.parse(urlSelected))
                     .setTitle(getString(R.string.app_name))
@@ -71,6 +72,8 @@ class MainActivity : AppCompatActivity() {
             downloadID =
                 downloadManager.enqueue(request)
         } else {
+            contentView.customButton.setStateBtnDownload(ButtonState.Completed)
+
             Toast.makeText(
                 applicationContext,
                 applicationContext.getString(R.string.undecided),
