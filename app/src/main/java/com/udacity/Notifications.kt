@@ -16,8 +16,11 @@ fun NotificationManager.sendNotification(
 ) {
 
     val contentIntent = Intent(context, DetailActivity::class.java)
-    contentIntent.putExtra("NotificationTitle", notiContent)
-    contentIntent.putExtra("NotificationSuccess", isSuccess)
+    contentIntent.apply {
+        putExtra("success", isSuccess)
+        putExtra("title", notiContent)
+    }
+
     val contentPendingIntent = PendingIntent.getActivity(
         context,
         NOTIFICATION_ID,

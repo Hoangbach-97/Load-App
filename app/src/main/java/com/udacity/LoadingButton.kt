@@ -24,6 +24,7 @@ class LoadingButton @JvmOverloads constructor(
 
     private var widthSize = 0
     private var heightSize = 0
+
     private var progress: Int = 0
     private var circleColor: Int = 0
     private var valueAnimator = ValueAnimator()
@@ -52,6 +53,12 @@ class LoadingButton @JvmOverloads constructor(
         paint.color = ContextCompat.getColor(context, R.color.colorPrimary)
         canvas.drawRect(0f, 0f, widthSize.toFloat(), heightSize.toFloat(), paint)
 
+        if (buttonState == ButtonState.Loading) {
+            paint.color = ContextCompat.getColor(context, R.color.colorPrimaryDark)
+            canvas.drawRect(0f, 0f, (progress / 1000f * widthSize), heightSize.toFloat(), paint)
+            paint.color = circleColor
+            canvas.drawArc(progressArc, 0f, (progress / 1000f * 360f), true, paint)
+        }
         paint.color = ContextCompat.getColor(context, R.color.white)
         paint.getTextBounds(textDpl, 0, textDpl.length, rectArea)
         canvas.drawText(
@@ -60,13 +67,6 @@ class LoadingButton @JvmOverloads constructor(
             (measuredHeight.toFloat() / 2 - rectArea.centerY()),
             paint
         )
-
-        if (buttonState == ButtonState.Loading) {
-            paint.color = ContextCompat.getColor(context, R.color.colorPrimaryDark)
-            canvas.drawRect(0f, 0f, (progress / 1000f * widthSize), heightSize.toFloat(), paint)
-            paint.color = circleColor
-            canvas.drawArc(progressArc, 0f, (progress / 1000f * 360f), true, paint)
-        }
 
     }
 
