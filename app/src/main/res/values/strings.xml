@@ -9,7 +9,7 @@
     <string name="notification_button">See changes</string>
 
     <string name="button_name">Click me</string>
-    <string name="button_loading">We are loading </string>
+    <string name="button_loading">Loading </string>
     <string name="title_activity_detail">DetailActivity</string>
 
     <!--    Defines name Radio buttons-->
@@ -19,4 +19,9 @@
     <string name="btn3">https://github.com/square/retrofit</string>
 
     <string name="undecided">Please select one repo to download!</string>
+    <string name="download_notification_channel_id">1</string>
+    <string name="notification_channel">Download Channel</string>
+    <string name="back_btn">Tap to back</string>
+    <string name="file_name">File name:</string>
+
 </resources>
