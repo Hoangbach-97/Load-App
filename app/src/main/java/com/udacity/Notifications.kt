@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.core.app.NotificationCompat
 
 private const val NOTIFICATION_ID = 0
@@ -21,13 +22,21 @@ fun NotificationManager.sendNotification(
         putExtra("title", notiContent)
     }
 
-    val contentPendingIntent = PendingIntent.getActivity(
-        context,
-        NOTIFICATION_ID,
-        contentIntent,
-        PendingIntent.FLAG_UPDATE_CURRENT
-    )
-
+    val contentPendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        PendingIntent.getActivity(
+            context,
+            NOTIFICATION_ID,
+            contentIntent,
+            PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+    } else {
+        PendingIntent.getActivity(
+            context,
+            NOTIFICATION_ID,
+            contentIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+    }
     val buttonPendingIntent: PendingIntent = PendingIntent.getActivity(
         context,
         REQUEST_CODE,
